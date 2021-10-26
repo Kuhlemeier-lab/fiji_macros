@@ -112,7 +112,7 @@ We use it as:
 
 We wanted to measure "how yellow" leaves were, so we took advantage of a Fiji macro published by [Laflamme and colleagues in 2016](https://doi.org/10.1094/MPMI-07-16-0129-TA), and [available on github](https://gist.github.com/DSGlab/1b3a226a7af884efd9356ea2d6a02bd4). We used the structure of their function (credited to Peggy Muddles in their code) to develop a macro that would fit our needs. We are grateful for their publishing of the code.
 
-The macro takes a picture with a dark background and measures the yellow and green areas (in our case leaves with signs of necrosis on a black photography cloth). The macro processes folders of input images and outputs a table containing yellow, green and total areas measured in pixels, and a new folder containing the same pictures, but painted where the areas where considered as greeen (painted green) and yellow (painted purple). Like this:
+The macro takes a picture with a dark background and measures the yellow and green areas (in our case leaves with signs of necrosis on a black photography cloth). The macro processes folders of input images and outputs a table containing yellow, green and total areas measured in pixels, and a new folder containing the same pictures, but painted where the areas where considered as greeen (painted green) and yellow (painted purple). The macro also saves a text files that reports the threshold values used, to always know which thresholds were used for the batch of pictures measured. Like this:
 
 <img src="https://user-images.githubusercontent.com/25846389/138834435-6f00b73c-b4de-4473-843d-df8807104420.png" width=50% height=50%>
 
