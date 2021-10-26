@@ -8,7 +8,6 @@ Except where differently stated, the code in this repo is licensed under [MIT li
 
 Open Fiji, do Plugins > Macros > Run and select the macro file.
 
-
 ## Crop leaves
 
 [crop_leaves.ijm](scripts/crop_leaves.ijm)
@@ -104,7 +103,7 @@ The macro takes a picture with a dark background and measures the yellow and gre
 
 When using this macro, **it is essential to maintain constant and even light conditions** throughout the whole photo shooting and across the surface that is photographed (no dark or extremely bright corners). And it is essential to have a colour reference card in each picture taken (note that you can combine this macro with the [crop leaves](##crop-leaves) one, so you don't have to take 1 picture for 1 subject necessarily). The measurement of the yellow and green on the colour cards throughout the experiment tells us if the light conditions have been constant (e.g. if the yellow area of the colour cards changes significantly between the first and last picture taken, then we cannot trust the results). For this reason I consider that only pictures taken in the same session can be compared. I thus suggest to always have a control condition in your session to compare to. You should also check how much of the total subject area is covered by the sum of yellow and green area. If this is too low then something is wrong (your subject has a colour that is not measured or the thresholds are not set correctly).
 
-How the macro decides to consider an area as yellow or green depends on the hue thresholds. The brightness and saturation are used to define the object area (as is done in [Measure area based on colour thresholds](##-measure-area-based-on-colour-thresholds). Then the hue is used to define what is yellow and what is green. These parameters are set in the beginning of the macro:
+How the macro decides to consider an area as yellow or green depends on the hue thresholds. The brightness and saturation are used to define the object area (as is done in [Measure area based on colour thresholds](#measure-area-based-on-colour-thresholds) ). Then the hue is used to define what is yellow and what is green. These parameters are set in the beginning of the macro:
 
 ```
 // thresholds for hue, saturation and brightness
@@ -122,7 +121,7 @@ var hueYMin = 12;
 var hueYMax = 62;
 ```
 
-Note that you will have to adjust the thresholds for your own picture settings. I suggest that you open a few images in Fiji and try the thresholds interactively as explained for [Measure area based on colour thresholds](#-measure-area-based-on-colour-thresholds).
+Note that you will have to adjust the thresholds for your own picture settings. I suggest that you open a few images in Fiji and try the thresholds interactively as explained for [Measure area based on colour thresholds](#measure-area-based-on-colour-thresholds).
 
 The macro also applies a minimum size threshold for the area considered (this is useful if you have debris in the background such as small pieces of leaves that remained but should not be counted). The size threshold is set here:
 
@@ -130,3 +129,5 @@ The macro also applies a minimum size threshold for the area considered (this is
 // area minimum threshold in pixel
 var areaMin = 470;
 ```
+[user-content-crop-leaves](user-content-crop-leaves)
+[crop-leaves](#crop-leaves)
