@@ -4,13 +4,23 @@ A collection of macros and scripts to be used with [Fiji (ImageJ)](https://image
 
 Except where differently stated, the code in this repo is licensed under [MIT license](LICENSE.txt). Note that certain macros are developed from macros already existing and with unknown license.
 
+**Table of content:**
+
+- [How to run the macros](#how-to-run-the-macros)
+- [Crop leaves](#crop-leaves)
+- [Crop and add scale bar](#crop-and-add-scale-bar)
+- [Measure area based on colour thresholds](#measure-area-based-on-colour-thresholds)
+- [Measure yellow and green areas](#measure-yellow-and-green-areas)
+
+
 ## How to run the macros
 
+Save the macro file on your computer (it is just a text file with the extension `.ijm`).
 Open Fiji, do Plugins > Macros > Run and select the macro file.
 
 ## Crop leaves
 
-[crop_leaves.ijm](scripts/crop_leaves.ijm)
+[The macro file crop_leaves.ijm](scripts/crop_leaves.ijm)
 
 A macro to crop areas from a picture based on a grid of rectangles. The macro takes a folder of images as input and creates a new folder with the cropped images numbered from 1 to the total number of areas cut from each picture (you can in fact set any string to distinguish the cut images). 
 
@@ -29,10 +39,10 @@ To set your newly established coordinates in the macro, just open the macro with
 
 ```
 // leaf 1
-	run("Specify...", "width=492 height=566 x=244 y=170");
-	run("Duplicate...", " ");
-	saveAs("Jpeg", out_folder + img_name + "_" + 1 + ".JPG");
-	close();
+run("Specify...", "width=492 height=566 x=244 y=170");
+run("Duplicate...", " ");
+saveAs("Jpeg", out_folder + img_name + "_" + 1 + ".JPG");
+close();
 ```
 
 Note that you can also set a different suffix for your cropped image to be saved (in the `saveAs` function).
@@ -42,9 +52,14 @@ Note that you can also set a different suffix for your cropped image to be saved
 
 ## Crop and add scale bar
 
-[crop_addscale.ijm](scripts/crop_addscale.ijm)
+[The macro file crop_addscale.ijm](scripts/crop_addscale.ijm)
 
-This is useful if you have a serie of pictures to crop all the same and add a scale bar (the scale has to be identical for all images). You need to have the coordinates of the rectangular area you want to crop, and you need the scale in pixel to your reference scale bar. These can be set by changing the text in the macro. See the section [crop leaves](#crop-leaves) for further details.
+This is useful if you have a serie of pictures to crop all the same and add a scale bar (the scale has to be identical for all images). You need to have the coordinates of the rectangular area you want to crop, and you need the scale in pixel to your reference scale bar. The coordinates can be set by changing the text in the macro. See the section [crop leaves](#crop-leaves) for further details. TO set the scale instead you should modify the section of code:
+
+```
+run("Set Scale...", "distance=37.292 known=1 unit=cm"); \\ scale proportion 1cm = 37.292 pixels
+run("Scale Bar...", "width=5 height=8 font=42 color=White background=None location=[Lower Right] overlay"); \\ scale bar position and size
+```
 
 For example we use it as such:
 
@@ -56,23 +71,23 @@ For example we use it as such:
 
 ## Measure area based on colour thresholds
 
-[leaves_area.ijm](scripts/leaves_area.ijm)
+[The macro file leaves_area.ijm](scripts/leaves_area.ijm)
 
 This is used to apply colour thresholds to an image (based on brightness, hue and saturation) and use those to define an area to measure.
 You should first define what your thresholds are by using fiji interactively. Open your image in fiji, then Image > Adjust > Color thresholds. You will see the areas that pass the thresholds highlighted in red. Find the optimal threshold for your images (ideally, you have taken all the pictures under the same light conditions, so you will have to do this only once) and add them in the macro, in the part of code:
 
 ```
-    \\ hue thresholds
-	min[0]=0;
-	max[0]=255;
-	filter[0]="pass";
-    \\ saturation thresholds
-	min[1]=0;
-	max[1]=255;
-	filter[1]="pass";
-    \\ brightness thresholds
-	min[2]=70;
-	max[2]=255;
+\\ hue thresholds
+min[0]=0;
+max[0]=255;
+filter[0]="pass";
+\\ saturation thresholds
+min[1]=0;
+max[1]=255;
+filter[1]="pass";
+\\ brightness thresholds
+min[2]=70;
+max[2]=255;
 ```
 
 <img src="https://user-images.githubusercontent.com/25846389/138705325-fd30ed99-fa63-49e9-9789-48f5546a0205.png" width=50% height=50%>
@@ -93,7 +108,7 @@ We use it as:
 
 ## Measure yellow and green areas
 
-[PIDIQ_edited.ijm](scripts/PIDIQ_edited.ijm)
+[The macro file PIDIQ_edited.ijm](scripts/PIDIQ_edited.ijm)
 
 We wanted to measure "how yellow" leaves were, so we took advantage of a Fiji macro published by [Laflamme and colleagues in 2016](https://doi.org/10.1094/MPMI-07-16-0129-TA), and [available on github](https://gist.github.com/DSGlab/1b3a226a7af884efd9356ea2d6a02bd4). We used the structure of their function (credited to Peggy Muddles in their code) to develop a macro that would fit our needs. We are grateful for their publishing of the code.
 
