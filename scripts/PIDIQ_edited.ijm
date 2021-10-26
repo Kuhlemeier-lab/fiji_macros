@@ -39,17 +39,17 @@
 
 // thresholds for hue, saturation and brightness
 // Brightness, defines leaf area
-var brightMin = 120;
+var brightMin = 40;
 var brightMax = 255;
 // Saturation
-var satMin = 60;
+var satMin = 65;
 var satMax = 255;
 // Hue, green
-var hueGMin = 62;
+var hueGMin = 66;
 var hueGMax = 150;
 // Hue, yellow
-var hueYMin = 16;
-var hueYMax = 60;
+var hueYMin = 12;
+var hueYMax = 62;
 
 // area minimum threshold in pixel
 var areaMin = 470;
