@@ -79,7 +79,7 @@ var filestoprocess = newArray(1000000);		//file names to process
 
 // begin macro code
 resetImageJ(); // clean up in case there are open windows or ROIs in manager
-
+var count = 0; 
 createTable(); // creates the results table
 getTimeString(); // makes the timestring
 
