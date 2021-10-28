@@ -22,15 +22,15 @@ function get_area(myfile) {
 	rename("1");
 	selectWindow("Brightness");
 	rename("2");
-    \\ hue thresholds
+    // hue thresholds
 	min[0]=0;
 	max[0]=255;
 	filter[0]="pass";
-    \\ saturation thresholds
+    // saturation thresholds
 	min[1]=0;
 	max[1]=255;
 	filter[1]="pass";
-    \\ brightness thresholds
+    // brightness thresholds
 	min[2]=70;
 	max[2]=255;
 	filter[2]="pass";
